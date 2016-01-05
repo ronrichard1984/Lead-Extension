@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <bulkinquiry_adminhtml_bulkinquiry_index>
+	<reference name="content">
+	  <block type="bulkinquiry/adminhtml_bulkinquiry" name="bulkinquiry" />
+	</reference>
+  </bulkinquiry_adminhtml_bulkinquiry_index>
+</layout>

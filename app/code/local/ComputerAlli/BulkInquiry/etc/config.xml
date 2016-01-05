@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <ComputerAlli_BulkInquiry>
+      <version>0.1.0</version>
+    </ComputerAlli_BulkInquiry>
+  </modules>
+  <global>
+    <helpers>
+      <bulkinquiry>
+        <class>ComputerAlli_BulkInquiry_Helper</class>
+      </bulkinquiry>
+    </helpers>
+	<blocks>
+	  <bulkinquiry>
+		<class>ComputerAlli_BulkInquiry_Block</class>
+	  </bulkinquiry>
+	</blocks>
+	<models>
+	  <bulkinquiry>
+		<class>ComputerAlli_BulkInquiry_Model</class>
+		<resourceModel>bulkinquiry_mysql4</resourceModel>
+	  </bulkinquiry>
+	  <bulkinquiry_mysql4>
+		<class>ComputerAlli_BulkInquiry_Model_Mysql4</class>
+		<entities>
+			  <bulkinquiry>
+				<table>bulk_inquiry</table>
+			  </bulkinquiry>
+		</entities>
+	  </bulkinquiry_mysql4>
+	</models>
+	<resources>
+	  <bulkinquiry_setup>
+		<setup>
+		  <module>ComputerAlli_BulkInquiry</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </bulkinquiry_setup>
+	  <bulkinquiry_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </bulkinquiry_write>
+	  <bulkinquiry_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </bulkinquiry_read>
+	</resources>
+  </global>
+  <admin>
+	<routers>
+	  <bulkinquiry>
+	    <use>admin</use>
+		<args>
+		  <module>ComputerAlli_BulkInquiry</module>
+		  <frontName>admin_bulkinquiry</frontName>
+		</args>
+	  </bulkinquiry>
+	</routers>
+  </admin>
+  <adminhtml>
+      <menu>
+          <bulkinquiry module="bulkinquiry">
+              <title>Leads</title>
+              <sort_order>81</sort_order>
+              <children>
+                  <bulkinquiry module="bulkinquiry">
+                      <title>Leads</title>
+                      <sort_order>0</sort_order>
+                      <action>admin_bulkinquiry/adminhtml_bulkinquiry</action>
+                  </bulkinquiry>
+                  <adminhistory module="adminhistory">
+                      <title>Manage Adminhistory</title>
+                      <sort_order>1</sort_order>
+                      <action>admin_adminhistory/adminhtml_adminhistory</action>
+                  </adminhistory>
+              </children>
+          </bulkinquiry>
+      </menu>
+      <acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<bulkinquiry translate="title" module="bulkinquiry">
+			  <title>Lead</title>
+			  <sort_order>81</sort_order>
+                <children>
+                    <bulkinquiry translate="title">
+                        <title>Manage Leads</title>
+                        <sort_order>0</sort_order>
+                    </bulkinquiry>
+                </children>
+                <children>
+                    <adminhistory translate="title">
+                        <title>Manage Adminhistory</title>
+                        <sort_order>1</sort_order>
+                    </adminhistory>
+                </children>
+            </bulkinquiry>
+          </children>
+          </admin>
+
+      </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<bulkinquiry>
+		  <file>bulkinquiry.xml</file>
+		</bulkinquiry>
+	  </updates>
+	</layout>
+  </adminhtml>
+</config> 

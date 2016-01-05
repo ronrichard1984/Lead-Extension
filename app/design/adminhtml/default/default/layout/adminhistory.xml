@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <adminhistory_adminhtml_adminhistory_index>
+	<reference name="content">
+	  <block type="adminhistory/adminhtml_adminhistory" name="adminhistory" />
+	</reference>
+  </adminhistory_adminhtml_adminhistory_index>
+</layout>

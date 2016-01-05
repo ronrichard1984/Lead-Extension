@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <ComputerAlli_AdminHistory>
+      <version>0.1.0</version>
+    </ComputerAlli_AdminHistory>
+  </modules>
+  <global>
+    <helpers>
+      <adminhistory>
+        <class>ComputerAlli_AdminHistory_Helper</class>
+      </adminhistory>
+    </helpers>
+	<blocks>
+	  <adminhistory>
+		<class>ComputerAlli_AdminHistory_Block</class>
+	  </adminhistory>
+	</blocks>
+	<models>
+	  <adminhistory>
+		<class>ComputerAlli_AdminHistory_Model</class>
+		<resourceModel>adminhistory_mysql4</resourceModel>
+	  </adminhistory>
+	  <adminhistory_mysql4>
+		<class>ComputerAlli_AdminHistory_Model_Mysql4</class>
+		<entities>		  
+			  <adminhistory>
+				<table>bulk_history</table>
+			  </adminhistory>
+		</entities>
+	  </adminhistory_mysql4>
+	</models>
+	<resources>
+	  <adminhistory_setup>
+		<setup>
+		  <module>ComputerAlli_AdminHistory</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </adminhistory_setup>
+	  <adminhistory_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </adminhistory_write>
+	  <adminhistory_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </adminhistory_read>
+	</resources>
+  </global>
+  <admin>
+	<routers>
+	  <adminhistory>
+	    <use>admin</use>
+		<args>
+		  <module>ComputerAlli_AdminHistory</module>
+		  <frontName>admin_adminhistory</frontName>
+		</args>
+	  </adminhistory>
+	</routers>
+  </admin>
+  <adminhtml>
+      <menu>
+          <bulkinquiry module="bulkinquiry">
+              <title>Leads</title>
+              <sort_order>81</sort_order>
+              <children>
+                  <bulkinquiry module="bulkinquiry">
+                      <title>Leads</title>
+                      <sort_order>0</sort_order>
+                      <action>admin_bulkinquiry/adminhtml_bulkinquiry</action>
+                  </bulkinquiry>
+                  <adminhistory module="adminhistory">
+                      <title>Manage Adminhistory</title>
+                      <sort_order>1</sort_order>
+                      <action>admin_adminhistory/adminhtml_adminhistory</action>
+                  </adminhistory>
+              </children>
+          </bulkinquiry>
+      </menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<adminhistory translate="title" module="adminhistory">
+			  <title>AdminHistory</title>
+			  <sort_order>82</sort_order>
+			  <children>
+		  <adminhistory translate="title">
+			<title>Manage Adminhistory</title>
+			<sort_order>1</sort_order>
+		  </adminhistory>
+			  </children>
+			</adminhistory>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<adminhistory>
+		  <file>adminhistory.xml</file>
+		</adminhistory>
+	  </updates>
+	</layout>
+  </adminhtml>
+</config> 
