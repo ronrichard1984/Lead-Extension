@@ -1,2 +1,2 @@
 # Lead-Extension
-Leads Manager Magento by Ron
+Leads Manager Magento Extension by Ron
